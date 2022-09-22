@@ -5,9 +5,13 @@
 <mapper namespace="com.sd.xingong.mapper.StudentMapper">
 
     <select id="getStudents" resultType="com.sd.xingong.pojo.Student">
-        SELECT * FROM tb_student;
+        SELECT * FROM tb_student LIMIT #{startIndex} , #{pageSize};
     </select>
     <select id="studentLogin"  resultType="com.sd.xingong.pojo.Student">
         SELECT * FROM tb_student WHERE student_id = #{studentId} and password = #{password};
     </select>
+    <select id="searchStudents" resultType="com.sd.xingong.pojo.Student">
+        SELECT * FROM tb_student WHERE name LIKE #{name} AND student_id LIKE #{studentId} AND title LIKE #{title};
+    </select>
+
 </mapper>

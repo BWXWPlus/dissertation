@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface StudentService {
 
-    List<Student> getStudents();
+    List<Student> getStudents(int startIndex,int pageSize);
 
     StudentResult studentLogin(long studentId, String password);
+
+    List<Student> searchStudents(String name, String studentId, String title);
 }

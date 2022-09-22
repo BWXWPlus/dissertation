@@ -6,7 +6,7 @@ public class Student {
   private long grade;
   private String specialities;
   private long stuClass;
-  private long studentId;
+  private String studentId;
   private String password;
   private String phone;
   private String email;
@@ -87,11 +87,11 @@ public class Student {
   }
 
 
-  public long getStudentId() {
+  public String getStudentId() {
     return studentId;
   }
 
-  public void setStudentId(long studentId) {
+  public void setStudentId(String studentId) {
     this.studentId = studentId;
   }
 

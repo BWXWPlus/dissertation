@@ -7,7 +7,9 @@ import java.util.List;
 
 @Mapper
 public interface StudentMapper {
-    List<Student> getStudents();
+    List<Student> getStudents(int startIndex,int pageSize);
 
     Student studentLogin(long studentId, String password);
+
+    List<Student> searchStudents(String name, String studentId, String title);
 }

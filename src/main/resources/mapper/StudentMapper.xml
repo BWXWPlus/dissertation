@@ -7,5 +7,7 @@
     <select id="getStudents" resultType="com.sd.xingong.pojo.Student">
         SELECT * FROM tb_student;
     </select>
-
+    <select id="studentLogin"  resultType="com.sd.xingong.pojo.Student">
+        SELECT * FROM tb_student WHERE student_id = #{studentId} and password = #{password};
+    </select>
 </mapper>

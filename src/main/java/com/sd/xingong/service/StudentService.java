@@ -1,6 +1,7 @@
 package com.sd.xingong.service;
 
 import com.sd.xingong.pojo.Student;
+import com.sd.xingong.vo.StudentCount;
 import com.sd.xingong.vo.StudentResult;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +14,7 @@ public interface StudentService {
 
     StudentResult studentLogin(long studentId, String password);
 
-    List<Student> searchStudents(String name, String studentId, String title);
+    StudentCount searchStudents(String name, String studentId, String title, int startIndex, int pageSize);
+
+    Boolean studentSelectTeacher(int teacherId, String studentId);
 }

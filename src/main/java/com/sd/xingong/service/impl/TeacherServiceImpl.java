@@ -5,6 +5,7 @@ import com.sd.xingong.mapper.TeacherMapper;
 import com.sd.xingong.pojo.Student;
 import com.sd.xingong.pojo.Teacher;
 import com.sd.xingong.service.TeacherService;
+import com.sd.xingong.vo.TeacherCount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,14 +19,19 @@ public class TeacherServiceImpl implements TeacherService {
     @Autowired
     private StudentMapper studentMapper;
     @Override
-    public List<Teacher> getTeachers(int startIndex, int pageSize) {
+    public TeacherCount getTeachers(String name , int startIndex, int pageSize) {
         //计算转换 ， 方便limit使用
         startIndex = pageSize * (startIndex - 1);
-        List<Teacher> teachers = teacherMapper.getTeachers(startIndex,pageSize);
+        name = "%" + name + "%";
+        List<Teacher> teachers = teacherMapper.getTeachers(name,startIndex,pageSize);
+
         for(Teacher teacher : teachers){
             teacher.setPassword("");
         }
-        return teachers;
+
+        int count = teacherMapper.getTeachersCount(name);
+
+        return new TeacherCount(count,teachers);
     }
 
     @Override
@@ -38,7 +44,7 @@ public class TeacherServiceImpl implements TeacherService {
         //再判断该学生是否已经有导师了，，严谨一点
         Student student = studentMapper.getAStudent(studentId);
 
-        if(student.getMentorId() > 0){
+        if(student == null ||(student.getMentorId() > 0 && student.getMentorId() != teacherId)){
             return false;
         }
         //两点都符合，导师即可选学生, 即导师的studentNum +1  学生的MentorId有值
@@ -46,6 +52,8 @@ public class TeacherServiceImpl implements TeacherService {
         teacherMapper.updateStudentNum(teacherId);
         //改变数据库的 MentorId
         studentMapper.updateMentorId(teacherId,studentId);
+        //改变学生的被选择状态
+        studentMapper.updateSelected(studentId);
         //选成功后返回true即可
         return true;
     }

@@ -3,6 +3,7 @@ package com.sd.xingong.controller;
 import com.sd.xingong.pojo.Student;
 import com.sd.xingong.pojo.Teacher;
 import com.sd.xingong.service.TeacherService;
+import com.sd.xingong.vo.TeacherCount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,16 +25,16 @@ public class TeacherController {
      * @return
      */
     @GetMapping
-    public List<Teacher> getTeachers(@RequestParam("startIndex") int startIndex, @RequestParam("pageSize") int pageSize){
+    public TeacherCount getTeachers(@RequestParam("name") String name, @RequestParam("startIndex") String startIndex, @RequestParam("pageSize") String pageSize){
 
-        List<Teacher> teachers = teacherService.getTeachers(startIndex,pageSize);
+        TeacherCount teachers = teacherService.getTeachers(name,Integer.parseInt(startIndex),Integer.parseInt(pageSize));
         return  teachers;
     }
 
     /**
      * 老师挑选学生
-     * @param teacherId
-     * @param studentId
+     * @param teacherId  teacherId  应为 Id  不能为工号， 因为有的外聘老师没有工号
+     * @param studentId  studentId  用学号来表示
      * @return
      */
     @GetMapping("/select")

@@ -11,9 +11,13 @@ public interface StudentMapper {
 
     Student studentLogin(long studentId, String password);
 
-    List<Student> searchStudents(String name, String studentId, String title);
+    List<Student> searchStudents(String name, String studentId, String title,int startIndex , int pageSize);
 
     Student getAStudent(String studentId);
 
     void updateMentorId(int teacherId,String studentId);
+
+    int getStudentCount(String name, String studentId, String title);
+
+    void updateSelected(String studentId);
 }

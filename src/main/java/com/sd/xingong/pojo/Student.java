@@ -40,6 +40,7 @@ public class Student {
   private java.sql.Timestamp gmtModified;
   private String gender;
   private long age;
+  private long isSelected;
 
 
   public long getId() {
@@ -50,6 +51,13 @@ public class Student {
     this.id = id;
   }
 
+  public long getIsSelected() {
+    return isSelected;
+  }
+
+  public void setIsSelected(long isSelected) {
+    this.isSelected = isSelected;
+  }
 
   public String getName() {
     return name;

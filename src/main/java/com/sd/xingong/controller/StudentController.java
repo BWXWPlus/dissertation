@@ -3,8 +3,10 @@ package com.sd.xingong.controller;
 
 import com.sd.xingong.pojo.Student;
 import com.sd.xingong.service.StudentService;
+import com.sd.xingong.vo.StudentCount;
 import com.sd.xingong.vo.StudentResult;
 import com.sd.xingong.vo.StudentVo;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +22,7 @@ public class StudentController {
     private StudentService studentService;
 
     /**
-     * 分页获取所有学生信息
+     * 分页获取所有学生信息   该方法废了
      * @return
      */
     @GetMapping
@@ -39,8 +41,10 @@ public class StudentController {
      * @return
      */
     @GetMapping("/search")
-    public List<Student> searchStudents(@RequestParam("name") String name, @RequestParam("studentId") String studentId, @RequestParam("title") String title){
-            List<Student> students = studentService.searchStudents(name,studentId,title);
+    public StudentCount searchStudents(@RequestParam("name") String name, @RequestParam("studentId") String studentId, @RequestParam("title") String title,@RequestParam("startIndex") String startIndex, @RequestParam("pageSize") String pageSize){
+                //获取所有学生列表
+               StudentCount students = studentService.searchStudents(name,studentId,title,Integer.parseInt(startIndex),Integer.parseInt(pageSize));
+
                 return  students;
         }
 
@@ -55,5 +59,16 @@ public class StudentController {
         return student;
     }
 
-
+    /**
+     * 学生选择老师
+     * @param teacherId
+     * @param studentId
+     * @return
+     */
+    @GetMapping("/select")
+    public Boolean studentSelectTeacher(@RequestParam("teacherId") String teacherId, @RequestParam("studentId") String studentId){
+        //学生选择老师，需要向老师发送请求，如果老师同意才可以选择成功, 学生中有一个字段来表示是否已经有导师
+        Boolean result = studentService.studentSelectTeacher(Integer.parseInt(teacherId),studentId);
+        return  result;
+    }
 }

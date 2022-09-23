@@ -11,7 +11,18 @@
         SELECT * FROM tb_student WHERE student_id = #{studentId} and password = #{password};
     </select>
     <select id="searchStudents" resultType="com.sd.xingong.pojo.Student">
-        SELECT * FROM tb_student WHERE name LIKE #{name} AND student_id LIKE #{studentId} AND title LIKE #{title};
+        SELECT * FROM tb_student WHERE name LIKE #{name} AND student_id LIKE #{studentId} AND title LIKE #{title} LIMIT #{startIndex} , #{pageSize};
     </select>
-
+    <select id="getAStudent" resultType="com.sd.xingong.pojo.Student">
+        SELECT * FROM tb_student WHERE student_id = #{studentId};
+    </select>
+    <update id="updateMentorId">
+        UPDATE tb_student SET mentor_id = #{teacherId}  WHERE student_id = #{studentId}
+    </update>
+    <update id="updateSelected">
+        UPDATE tb_student SET is_selected = 1 WHERE student_id = #{studentId}
+    </update>
+    <select id="getStudentCount" resultType="int">
+        SELECT COUNT(*) FROM tb_student WHERE name LIKE #{name} AND student_id LIKE #{studentId} AND title LIKE #{title};
+    </select>
 </mapper>

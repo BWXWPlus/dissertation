@@ -34,7 +34,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public StudentResult studentLogin(long studentId, String password) {
+    public StudentResult studentLogin(String studentId, String password) {
 
         Student student = studentMapper.studentLogin(studentId,password);
 
@@ -45,7 +45,7 @@ public class StudentServiceImpl implements StudentService {
             return new StudentResult(uuid,student);
         }
         //没有找到则返回空
-        return null;
+        return new StudentResult();
 
     }
 

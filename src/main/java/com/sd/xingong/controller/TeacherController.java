@@ -3,7 +3,9 @@ package com.sd.xingong.controller;
 import com.sd.xingong.pojo.Student;
 import com.sd.xingong.pojo.Teacher;
 import com.sd.xingong.service.TeacherService;
+import com.sd.xingong.vo.Login;
 import com.sd.xingong.vo.TeacherCount;
+import com.sd.xingong.vo.TeacherResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,27 +22,47 @@ public class TeacherController {
 
     /**
      * 分页显示所有教师信息
+     *
      * @param startIndex
      * @param pageSize
      * @return
      */
     @GetMapping
-    public TeacherCount getTeachers(@RequestParam("name") String name, @RequestParam("startIndex") String startIndex, @RequestParam("pageSize") String pageSize){
+    public TeacherCount getTeachers(@RequestParam("name") String name, @RequestParam("startIndex") String startIndex, @RequestParam("pageSize") String pageSize) {
 
-        TeacherCount teachers = teacherService.getTeachers(name,Integer.parseInt(startIndex),Integer.parseInt(pageSize));
-        return  teachers;
+        TeacherCount teachers = teacherService.getTeachers(name, Integer.parseInt(startIndex), Integer.parseInt(pageSize));
+        return teachers;
     }
 
     /**
      * 老师挑选学生
-     * @param teacherId  teacherId  应为 Id  不能为工号， 因为有的外聘老师没有工号
-     * @param studentId  studentId  用学号来表示
+     *
+     * @param teacherId teacherId  应为 Id  不能为工号， 因为有的外聘老师没有工号
+     * @param studentId studentId  用学号来表示
      * @return
      */
     @GetMapping("/select")
-    public Boolean teacherSelectStudents(@RequestParam("teacherId") int teacherId, @RequestParam("studentId") String studentId){
+    public Boolean teacherSelectStudents(@RequestParam("teacherId") String teacherId, @RequestParam("studentId") String studentId) {
+
+        //studentId 可以批量传入
+        String[] studentIds = studentId.split(",");
+ /*       for(String s : studentIds){
+            System.out.println(s);
+        }*/
         //教师选学生，选择成功返回true否则就是false
-       Boolean result =  teacherService.teacherSelectStudents(teacherId,studentId);
-       return result;
+        Boolean result = teacherService.teacherSelectStudents(Integer.parseInt(teacherId), studentIds);
+        return result;
+    }
+
+    /**
+     * 教师登录
+     * @param
+     * @param
+     * @return
+     */
+    @PostMapping("/login")
+    public TeacherResult teacherLogin(@RequestBody Login login) {
+        TeacherResult teacher = teacherService.teacherLogin(login.getId(), login.getPassWord());
+        return teacher;
     }
 }

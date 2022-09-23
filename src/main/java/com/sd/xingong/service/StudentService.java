@@ -12,7 +12,7 @@ public interface StudentService {
 
     List<Student> getStudents(int startIndex,int pageSize);
 
-    StudentResult studentLogin(long studentId, String password);
+    StudentResult studentLogin(String studentId, String password);
 
     StudentCount searchStudents(String name, String studentId, String title, int startIndex, int pageSize);
 

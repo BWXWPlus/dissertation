@@ -3,11 +3,9 @@ package com.sd.xingong.controller;
 
 import com.sd.xingong.pojo.Student;
 import com.sd.xingong.service.StudentService;
+import com.sd.xingong.vo.Login;
 import com.sd.xingong.vo.StudentCount;
 import com.sd.xingong.vo.StudentResult;
-import com.sd.xingong.vo.StudentVo;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,12 +48,12 @@ public class StudentController {
 
     /**
      * 学生登录， 接收的为封装好的StudentVo类 返回的为StudentResult类
-     * @param studentVo
+     * @param
      * @return
      */
     @PostMapping("/login")
-    public StudentResult studentLogin(@RequestBody StudentVo studentVo){
-        StudentResult student = studentService.studentLogin(studentVo.getStudentId(),studentVo.getPassword());
+    public StudentResult studentLogin(@RequestBody Login login){
+        StudentResult student = studentService.studentLogin(login.getId(),login.getPassWord());
         return student;
     }
 

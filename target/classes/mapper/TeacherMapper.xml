@@ -15,4 +15,7 @@
     <select id="getTeachersCount" resultType="int">
         SELECT COUNT(*) FROM tb_teacher WHERE name LIKE #{name};
     </select>
+    <select id="teacherLogin" resultType="com.sd.xingong.pojo.Teacher">
+        SELECT * FROM tb_teacher WHERE id = #{id} AND password = #{password};
+    </select>
 </mapper>

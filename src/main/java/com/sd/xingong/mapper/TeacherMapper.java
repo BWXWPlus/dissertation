@@ -14,4 +14,6 @@ public interface TeacherMapper {
     void updateStudentNum(long teacherId);
 
     int getTeachersCount(String name);
+
+    Teacher teacherLogin(String id, String password);
 }

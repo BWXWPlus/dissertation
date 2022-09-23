@@ -9,7 +9,7 @@ import java.util.List;
 public interface StudentMapper {
     List<Student> getStudents(int startIndex,int pageSize);
 
-    Student studentLogin(long studentId, String password);
+    Student studentLogin(String studentId, String password);
 
     List<Student> searchStudents(String name, String studentId, String title,int startIndex , int pageSize);
 

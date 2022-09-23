@@ -19,7 +19,12 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> getStudents(int startIndex,int pageSize) {
         //计算转换 ， 方便limit使用
         startIndex = pageSize * (startIndex - 1);
-        return studentMapper.getStudents(startIndex,pageSize);
+        List<Student> students = studentMapper.getStudents(startIndex, pageSize);
+        //TODO 先将密码置为空，将所有数据都返回给前端，后期再设实体类来去除密码字段
+        for(Student student : students){
+            student.setPassword("");
+        }
+        return  students;
     }
 
     @Override
@@ -30,6 +35,7 @@ public class StudentServiceImpl implements StudentService {
         //如果学生用户名密码正确，则返回学生详细信息以及一个token
         if(student != null){
             String uuid = UUID.randomUUID().toString();
+            student.setPassword("");
             return new StudentResult(uuid,student);
         }
         //没有找到则返回空
@@ -44,6 +50,9 @@ public class StudentServiceImpl implements StudentService {
         studentId = "%" + studentId + "%";
         title = "%" + title + "%";
         List<Student> students =  studentMapper.searchStudents(name,studentId,title);
+        for(Student student : students){
+            student.setPassword("");
+        }
         return  students;
     }
 }

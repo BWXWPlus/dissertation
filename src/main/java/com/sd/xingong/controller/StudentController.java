@@ -23,7 +23,7 @@ public class StudentController {
      * 分页获取所有学生信息
      * @return
      */
-    @GetMapping()
+    @GetMapping
     public List<Student> getStudents(@RequestParam("startIndex") int startIndex, @RequestParam("pageSize") int pageSize){
     //    System.out.println(startIndex+ "====" +pageSize);
 

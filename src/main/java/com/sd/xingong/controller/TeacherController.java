@@ -17,10 +17,29 @@ public class TeacherController {
     @Autowired
     private TeacherService teacherService;
 
+    /**
+     * 分页显示所有教师信息
+     * @param startIndex
+     * @param pageSize
+     * @return
+     */
     @GetMapping
     public List<Teacher> getTeachers(@RequestParam("startIndex") int startIndex, @RequestParam("pageSize") int pageSize){
 
         List<Teacher> teachers = teacherService.getTeachers(startIndex,pageSize);
         return  teachers;
+    }
+
+    /**
+     * 老师挑选学生
+     * @param teacherId
+     * @param studentId
+     * @return
+     */
+    @GetMapping("/select")
+    public Boolean teacherSelectStudents(@RequestParam("teacherId") int teacherId, @RequestParam("studentId") String studentId){
+        //教师选学生，选择成功返回true否则就是false
+       Boolean result =  teacherService.teacherSelectStudents(teacherId,studentId);
+       return result;
     }
 }

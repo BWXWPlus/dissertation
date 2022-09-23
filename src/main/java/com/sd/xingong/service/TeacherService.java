@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TeacherService {
     List<Teacher> getTeachers(int startIndex, int pageSize);
+
+    Boolean teacherSelectStudents(int teacherId, String studentId);
 }

@@ -8,4 +8,8 @@ import java.util.List;
 @Mapper
 public interface TeacherMapper {
     List<Teacher> getTeachers(int startIndex, int pageSize);
+
+    Teacher getATeacher(int teacherId);
+
+    void updateStudentNum(long teacherId);
 }

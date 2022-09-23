@@ -343,4 +343,43 @@ public class Teacher {
     this.gmtModified = gmtModified;
   }
 
+  @Override
+  public String toString() {
+    return "Teacher{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", jobNo=" + jobNo +
+            ", teacherTitle='" + teacherTitle + '\'' +
+            ", password='" + password + '\'' +
+            ", gender='" + gender + '\'' +
+            ", department='" + department + '\'' +
+            ", company='" + company + '\'' +
+            ", major='" + major + '\'' +
+            ", education='" + education + '\'' +
+            ", academicDegree='" + academicDegree + '\'' +
+            ", researchDirection='" + researchDirection + '\'' +
+            ", age=" + age +
+            ", phone='" + phone + '\'' +
+            ", email='" + email + '\'' +
+            ", qq='" + qq + '\'' +
+            ", image='" + image + '\'' +
+            ", topic='" + topic + '\'' +
+            ", topic2='" + topic2 + '\'' +
+            ", topic3='" + topic3 + '\'' +
+            ", topic4='" + topic4 + '\'' +
+            ", topic5='" + topic5 + '\'' +
+            ", topic6='" + topic6 + '\'' +
+            ", topic7='" + topic7 + '\'' +
+            ", topic8='" + topic8 + '\'' +
+            ", studentNum=" + studentNum +
+            ", note='" + note + '\'' +
+            ", note2='" + note2 + '\'' +
+            ", note3='" + note3 + '\'' +
+            ", note4='" + note4 + '\'' +
+            ", note5='" + note5 + '\'' +
+            ", isFirstTutor=" + isFirstTutor +
+            ", gmtCreate=" + gmtCreate +
+            ", gmtModified=" + gmtModified +
+            '}';
+  }
 }

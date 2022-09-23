@@ -3,6 +3,7 @@ package com.sd.xingong.controller;
 
 import com.sd.xingong.pojo.Student;
 import com.sd.xingong.service.StudentService;
+import com.sd.xingong.vo.DissertationVo;
 import com.sd.xingong.vo.Login;
 import com.sd.xingong.vo.StudentCount;
 import com.sd.xingong.vo.StudentResult;
@@ -69,4 +70,17 @@ public class StudentController {
         Boolean result = studentService.studentSelectTeacher(Integer.parseInt(teacherId),studentId);
         return  result;
     }
+
+    /**
+     * 学生编辑自己的论文信息
+     * @param
+     * @return
+     */
+    @PutMapping
+    public Boolean editDissertation(@RequestBody Student student){
+        Boolean result = studentService.editDissertation(student);
+        System.out.println(student);
+        return result;
+    }
+
 }

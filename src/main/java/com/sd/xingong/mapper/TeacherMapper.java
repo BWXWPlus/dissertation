@@ -16,4 +16,6 @@ public interface TeacherMapper {
     int getTeachersCount(String name);
 
     Teacher teacherLogin(String id, String password);
+
+    int teacherRefuseStudent(String studentId);
 }

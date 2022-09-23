@@ -55,6 +55,19 @@ public class TeacherController {
     }
 
     /**
+     * 教师拒绝学生的选择
+     * @param studentId
+     * @return
+     */
+
+    @GetMapping("/refuse")
+    public Boolean teacherRefuseStudent(@RequestParam("studentId") String studentId){
+        //教师拒绝学生的请求，直接将学生的mentor_id字段置为 0 就行
+        Boolean result = teacherService.teacherRefuseStudent(studentId);
+        return  result;
+    }
+
+    /**
      * 教师登录
      * @param
      * @param
@@ -62,7 +75,9 @@ public class TeacherController {
      */
     @PostMapping("/login")
     public TeacherResult teacherLogin(@RequestBody Login login) {
+
         TeacherResult teacher = teacherService.teacherLogin(login.getId(), login.getPassWord());
         return teacher;
     }
+
 }

@@ -90,4 +90,15 @@ public class StudentServiceImpl implements StudentService {
 
         return true;
     }
+
+    @Override
+    public Boolean editDissertation(Student student) {
+        //提取一些学生能够对论文进行改动的数据
+        String title = student.getTitle();
+        String language = student.getLanguage();
+        String researchDirection = student.getResearchDirection();
+        String thesisKeyword = student.getThesisKeyword();
+
+        return null;
+    }
 }

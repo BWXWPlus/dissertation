@@ -74,4 +74,14 @@ public class TeacherServiceImpl implements TeacherService {
 
         return new TeacherResult();
     }
+
+    @Override
+    public Boolean teacherRefuseStudent(String studentId) {
+
+        int result = teacherMapper.teacherRefuseStudent(studentId);
+        if(result>0){
+            return true;
+        }
+        return false;
+    }
 }

@@ -400,4 +400,49 @@ public class Student {
     this.age = age;
   }
 
+  @Override
+  public String toString() {
+    return "Student{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", grade=" + grade +
+            ", specialities='" + specialities + '\'' +
+            ", stuClass=" + stuClass +
+            ", studentId='" + studentId + '\'' +
+            ", password='" + password + '\'' +
+            ", phone='" + phone + '\'' +
+            ", email='" + email + '\'' +
+            ", qq='" + qq + '\'' +
+            ", title='" + title + '\'' +
+            ", language='" + language + '\'' +
+            ", researchDirection='" + researchDirection + '\'' +
+            ", thesisKeyword='" + thesisKeyword + '\'' +
+            ", isFirstSession=" + isFirstSession +
+            ", thesisType='" + thesisType + '\'' +
+            ", file='" + file + '\'' +
+            ", file2='" + file2 + '\'' +
+            ", file3='" + file3 + '\'' +
+            ", natureTopicSelection=" + natureTopicSelection +
+            ", sourceTopicSelection=" + sourceTopicSelection +
+            ", isCompletePractice=" + isCompletePractice +
+            ", mentorId=" + mentorId +
+            ", mentor2Id=" + mentor2Id +
+            ", mentorScore=" + mentorScore +
+            ", appraiserScore=" + appraiserScore +
+            ", defenseScore=" + defenseScore +
+            ", comprehensiveScore=" + comprehensiveScore +
+            ", evaluationGrade=" + evaluationGrade +
+            ", repetitionRate=" + repetitionRate +
+            ", notes='" + notes + '\'' +
+            ", notes2='" + notes2 + '\'' +
+            ", notes3='" + notes3 + '\'' +
+            ", notes4='" + notes4 + '\'' +
+            ", notes5='" + notes5 + '\'' +
+            ", gmtCreate=" + gmtCreate +
+            ", gmtModified=" + gmtModified +
+            ", gender='" + gender + '\'' +
+            ", age=" + age +
+            ", isSelected=" + isSelected +
+            '}';
+  }
 }

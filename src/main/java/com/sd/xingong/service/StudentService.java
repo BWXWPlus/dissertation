@@ -17,4 +17,6 @@ public interface StudentService {
     StudentCount searchStudents(String name, String studentId, String title, int startIndex, int pageSize);
 
     Boolean studentSelectTeacher(int teacherId, String studentId);
+
+    Boolean editDissertation(Student student);
 }

@@ -12,4 +12,6 @@ public interface TeacherService {
     Boolean teacherSelectStudents(int teacherId, String[] studentIds);
 
     TeacherResult teacherLogin(String id, String passWord);
+
+    Boolean teacherRefuseStudent(String studentId);
 }

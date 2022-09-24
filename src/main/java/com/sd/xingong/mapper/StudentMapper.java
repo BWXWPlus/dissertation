@@ -20,4 +20,10 @@ public interface StudentMapper {
     int getStudentCount(String name, String studentId, String title);
 
     void updateSelected(String studentId);
+
+    List<Student> getStudentsByTeacher(int teacherId, int isSelected);
+
+    void uploadFiles(String studentId,String str, String type);
+
+    int editStudentInformation(Student student);
 }

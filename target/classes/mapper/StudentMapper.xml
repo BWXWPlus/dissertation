@@ -5,24 +5,122 @@
 <mapper namespace="com.sd.xingong.mapper.StudentMapper">
 
     <select id="getStudents" resultType="com.sd.xingong.pojo.Student">
-        SELECT * FROM tb_student LIMIT #{startIndex} , #{pageSize};
+        SELECT *
+        FROM tb_student LIMIT #{startIndex} , #{pageSize};
     </select>
-    <select id="studentLogin"  resultType="com.sd.xingong.pojo.Student">
-        SELECT * FROM tb_student WHERE student_id = #{studentId} and password = #{password};
+    <select id="studentLogin" resultType="com.sd.xingong.pojo.Student">
+        SELECT *
+        FROM tb_student
+        WHERE student_id = #{studentId}
+          and password = #{password};
     </select>
     <select id="searchStudents" resultType="com.sd.xingong.pojo.Student">
-        SELECT * FROM tb_student WHERE name LIKE #{name} AND student_id LIKE #{studentId} AND title LIKE #{title} LIMIT #{startIndex} , #{pageSize};
+        SELECT *
+        FROM tb_student
+        WHERE name LIKE #{name}
+          AND student_id LIKE #{studentId}
+          AND title LIKE #{title} LIMIT #{startIndex}
+            , #{pageSize};
     </select>
     <select id="getAStudent" resultType="com.sd.xingong.pojo.Student">
-        SELECT * FROM tb_student WHERE student_id = #{studentId};
+        SELECT *
+        FROM tb_student
+        WHERE student_id = #{studentId};
     </select>
     <update id="updateMentorId">
-        UPDATE tb_student SET mentor_id = #{teacherId}  WHERE student_id = #{studentId}
+        UPDATE tb_student
+        SET mentor_id = #{teacherId}
+        WHERE student_id = #{studentId}
     </update>
     <update id="updateSelected">
-        UPDATE tb_student SET is_selected = 1 WHERE student_id = #{studentId}
+        UPDATE tb_student
+        SET is_selected = 1
+        WHERE student_id = #{studentId}
     </update>
     <select id="getStudentCount" resultType="int">
-        SELECT COUNT(*) FROM tb_student WHERE name LIKE #{name} AND student_id LIKE #{studentId} AND title LIKE #{title};
+        SELECT COUNT(*)
+        FROM tb_student
+        WHERE name LIKE #{name}
+          AND student_id LIKE #{studentId}
+          AND title LIKE #{title};
     </select>
+    <select id="getStudentsByTeacher" resultType="com.sd.xingong.pojo.Student">
+        SELECT *
+        FROM tb_student
+        WHERE mentor_id = #{teacherId}
+          AND is_selected = #{isSelected};
+    </select>
+    <update id="uploadFiles">
+        UPDATE tb_student SET
+
+        <if test="type == 1 ">
+            file = #{str}
+        </if>
+        <if test="type == 2">
+            file2 = #{str}
+        </if>
+        <if test="type == 3">
+            file3 = #{str}
+        </if>
+
+        WHERE student_id = #{studentId}
+    </update>
+    <update id="editStudentInformation" parameterType="com.sd.xingong.pojo.Student">
+        UPDATE tb_student
+        <trim prefix="set" suffixOverrides=",">
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test=" qq != null">
+                qq = #{qq},
+            </if>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="language != null">
+                language = #{language},
+            </if>
+            <if test="researchDirection != null">
+                research_direction = #{researchDirection},
+            </if>
+            <if test="thesisKeyword != null">
+                thesis_keyword = #{thesisKeyword},
+            </if>
+            <if test="thesisType != null">
+                thesis_type = #{thesisType},
+            </if>
+            <if test="natureTopicSelection != 0">
+                nature_topic_selection = #{natureTopicSelection},
+            </if>
+            <if test="sourceTopicSelection != 0">
+                source_topic_selection = #{sourceTopicSelection},
+            </if>
+            <if test="mentorScore != 0">
+                mentor_score = #{mentorScore},
+            </if>
+            <if test="appraiserScore != 0">
+                appraiser_score = #{appraiserScore},
+            </if>
+            <if test="defenseScore != 0">
+                defense_score = #{defenseScore},
+            </if>
+            <if test="comprehensiveScore != 0">
+                comprehensive_score = #{comprehensiveScore},
+            </if>
+            <if test="evaluationGrade != 0">
+                evaluation_grade = #{evaluationGrade},
+            </if>
+            <if test="repetitionRate != 0">
+                repetition_rate = #{repetitionRate},
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified = #{gmtModified},
+            </if>
+        </trim>
+        WHERE student_id = #{studentId};
+    </update>
+
 </mapper>

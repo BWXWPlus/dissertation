@@ -72,13 +72,15 @@ public class StudentController {
     }
 
     /**
-     * 学生编辑自己的论文信息
+     * 编辑学生相关的信息  所有编辑学生的信息都调用该接口，
+     *
      * @param
      * @return
      */
+    // TODO 后期对学生的操作进行细分，先实现所有功能
     @PutMapping
-    public Boolean editDissertation(@RequestBody Student student){
-        Boolean result = studentService.editDissertation(student);
+    public Boolean editStudentInformation(@RequestBody Student student){
+        Boolean result = studentService.editStudentInformation(student);
         System.out.println(student);
         return result;
     }

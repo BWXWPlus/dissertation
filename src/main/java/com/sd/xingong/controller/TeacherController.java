@@ -46,7 +46,7 @@ public class TeacherController {
 
         //studentId 可以批量传入
         String[] studentIds = studentId.split(",");
- /*       for(String s : studentIds){
+     /*   for(String s : studentIds){
             System.out.println(s);
         }*/
         //教师选学生，选择成功返回true否则就是false
@@ -78,6 +78,29 @@ public class TeacherController {
 
         TeacherResult teacher = teacherService.teacherLogin(login.getId(), login.getPassWord());
         return teacher;
+    }
+
+    /**
+     * 获取当前老师下的所有学生
+     * @param id
+     * @return
+     */
+    @GetMapping("/student")
+    public List<Student> teacherGetStudents(@RequestParam("teacherId") String id,@RequestParam("isSelected") String isSelected){
+
+        List<Student> students = teacherService.teacherGetStudents(Integer.parseInt(id),Integer.parseInt(isSelected));
+        return  students;
+    }
+
+    /**
+     * 根据教师的Id来获取老师的信息
+     * @param teacherId
+     * @return
+     */
+    @GetMapping("/get/one")
+    public Teacher getATeacherById(@RequestParam("teacherId") String teacherId){
+        Teacher teacher = teacherService.getATeacherById(Integer.parseInt(teacherId));
+        return  teacher;
     }
 
 }

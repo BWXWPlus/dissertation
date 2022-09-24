@@ -18,4 +18,6 @@ public interface TeacherMapper {
     Teacher teacherLogin(String id, String password);
 
     int teacherRefuseStudent(String studentId);
+
+    void uploadFiles(String id, String str);
 }

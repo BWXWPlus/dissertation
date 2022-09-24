@@ -18,5 +18,5 @@ public interface StudentService {
 
     Boolean studentSelectTeacher(int teacherId, String studentId);
 
-    Boolean editDissertation(Student student);
+    Boolean editStudentInformation(Student student);
 }

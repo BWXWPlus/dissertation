@@ -40,7 +40,11 @@ public class TeacherServiceImpl implements TeacherService {
     public Boolean teacherSelectStudents(int teacherId, String[] studentIds) {
         //首先要先判断该导师是否已经选满了20人，如果已经选满20人，则不能再选学生
         Teacher teacher = teacherMapper.getATeacher(teacherId);
-        if(teacher.getStudentNum() >= 20){
+        //teacher不能为空
+        if(teacher == null){
+            return  false;
+        }
+        if(teacher.getStudentNum()  + studentIds.length> 20){
             return  false;
         }
         for(String studentId : studentIds){
@@ -83,5 +87,21 @@ public class TeacherServiceImpl implements TeacherService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<Student> teacherGetStudents(int teacherId, int isSelected) {
+       List<Student> students =  studentMapper.getStudentsByTeacher(teacherId,isSelected);
+        return students;
+    }
+
+    @Override
+    public Teacher getATeacherById(int parseInt) {
+        Teacher aTeacher = teacherMapper.getATeacher(parseInt);
+        if(aTeacher != null){
+            aTeacher.setPassword("");
+            return aTeacher;
+        }
+        return null;
     }
 }

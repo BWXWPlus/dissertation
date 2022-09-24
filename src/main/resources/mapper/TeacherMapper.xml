@@ -18,9 +18,13 @@
     <select id="teacherLogin" resultType="com.sd.xingong.pojo.Teacher">
         SELECT * FROM tb_teacher WHERE id = #{id} AND password = #{password};
     </select>
-
+    <update id="uploadFiles">
+        UPDATE tb_teacher SET image = #{str} WHERE id = #{id};
+    </update>
   <!--  教师对学生表的一些操作-->
     <update id="teacherRefuseStudent">
-        UPDATE tb_student SET mentor_id = 0 WHERE student_id = #{studentId};
+        UPDATE tb_student SET mentor_id = 0 WHERE student_id = #{studentId} ;
     </update>
+
+
 </mapper>

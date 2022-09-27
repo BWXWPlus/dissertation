@@ -20,4 +20,6 @@ public interface TeacherMapper {
     int teacherRefuseStudent(String studentId);
 
     void uploadFiles(String id, String str);
+
+    int editTeacher(Teacher teacher);
 }

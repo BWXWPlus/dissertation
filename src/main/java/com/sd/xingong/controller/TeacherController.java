@@ -103,4 +103,11 @@ public class TeacherController {
         return  teacher;
     }
 
+    @PutMapping
+    public Boolean editTeacher(@RequestBody Teacher teacher){
+
+        Boolean result = teacherService.editTeacher(teacher);
+        return  result;
+    }
+
 }

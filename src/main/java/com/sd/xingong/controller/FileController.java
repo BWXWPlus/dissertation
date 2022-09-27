@@ -4,7 +4,9 @@ import com.sd.xingong.mapper.StudentMapper;
 import com.sd.xingong.mapper.TeacherMapper;
 import com.sd.xingong.vo.FileNameVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.support.HttpRequestHandlerServlet;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;

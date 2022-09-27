@@ -104,4 +104,13 @@ public class TeacherServiceImpl implements TeacherService {
         }
         return null;
     }
+
+    @Override
+    public Boolean editTeacher(Teacher teacher) {
+        int result = teacherMapper.editTeacher(teacher);
+        if(result > 0){
+            return  true;
+        }
+        return false;
+    }
 }

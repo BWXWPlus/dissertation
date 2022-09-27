@@ -25,6 +25,9 @@
     <update id="teacherRefuseStudent">
         UPDATE tb_student SET mentor_id = 0 WHERE student_id = #{studentId} ;
     </update>
+    <update id="editTeacher">
+        UPDATE tb_teacher
 
+    </update>
 
 </mapper>

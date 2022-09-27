@@ -19,4 +19,6 @@ public interface TeacherService {
     List<Student> teacherGetStudents(int parseInt, int isSelected);
 
     Teacher getATeacherById(int parseInt);
+
+    Boolean editTeacher(Teacher teacher);
 }

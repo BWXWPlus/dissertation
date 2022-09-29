@@ -68,10 +68,10 @@ public class FileController {
 
         String path = "";
         if(grade != "" && specialities != "" && stuClass !=""){
-            path = grade + "级\\" + specialities + "专业\\" + stuClass + "班\\";
+            path = grade + "级/" + specialities + "专业/" + stuClass + "班/";
             flat = 2;
         }else {
-            path = "教师\\";
+            path = "教师/";
             flat = 3;
         }
         property  = property + path;
@@ -85,7 +85,7 @@ public class FileController {
         }
         try {
             file.transferTo(newFile);
-            String str = "\\src\\main\\resources\\static\\"+ path+originalFilename;
+            String str =  path+originalFilename;
 
             if(flat == 2){
                 //将文件名称写入学生数据库

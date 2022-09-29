@@ -89,19 +89,19 @@
                 topic8 = #{topic8},
             </if>
             <if test="notes != null">
-                notes = #{notes}
+                notes = #{notes},
             </if>
             <if test="notes2 != null">
-                notes2 = #{notes2}
+                notes2 = #{notes2},
             </if>
             <if test="notes3 != null">
-                notes3 = #{notes3}
+                notes3 = #{notes3},
             </if>
             <if test="notes4 != null">
-                notes4 = #{notes4}
+                notes4 = #{notes4},
             </if>
             <if test="notes5 != null">
-                notes5 = #{notes5}
+                notes5 = #{notes5},
             </if>
         </trim>
         WHERE id = #{id};

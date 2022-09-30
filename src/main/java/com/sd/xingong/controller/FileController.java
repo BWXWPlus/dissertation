@@ -44,6 +44,10 @@ public class FileController {
         String originalFilename = file.getOriginalFilename();
         String[] split = originalFilename.split("[.]");
         int flat = 0;
+        split[0] = split[0].trim();
+        if(split[0].equals("")){
+            return "文件命名有误";
+        }
         //判断是不是当前支持的文件格式
         for(String str : filter){
          //   System.out.println(str+"===");

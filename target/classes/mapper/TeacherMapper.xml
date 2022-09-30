@@ -88,20 +88,20 @@
             <if test="topic8 != null">
                 topic8 = #{topic8},
             </if>
-            <if test="notes != null">
-                notes = #{notes},
+            <if test="note != null">
+                note = #{note},
             </if>
-            <if test="notes2 != null">
-                notes2 = #{notes2},
+            <if test="note2 != null">
+                note2 = #{note2},
             </if>
-            <if test="notes3 != null">
-                notes3 = #{notes3},
+            <if test="note3 != null">
+                note3 = #{note3},
             </if>
-            <if test="notes4 != null">
-                notes4 = #{notes4},
+            <if test="note4 != null">
+                note4 = #{note4},
             </if>
-            <if test="notes5 != null">
-                notes5 = #{notes5},
+            <if test="note5 != null">
+                note5 = #{note5},
             </if>
         </trim>
         WHERE id = #{id};

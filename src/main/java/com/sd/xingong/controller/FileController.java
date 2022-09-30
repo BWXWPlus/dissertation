@@ -36,21 +36,25 @@ public class FileController {
      */
     @PostMapping("/upload")
     public String upload(@RequestBody MultipartFile file,@RequestParam("Id") String Id, @RequestParam("grade") String grade, @RequestParam("specialities") String specialities, @RequestParam("stuClass") String stuClass, @RequestParam("type") String type){
+
+        System.out.println(file+"=" + Id +"=" +grade +"=" +specialities + "=" +stuClass+"=" +type)  ;
         //支持上传的文件格式
-        String []filter = {"bmp", "jpg", "jepg", "gif", "png","doc","pdf","zip","rar","docx"};
+        String []filter = {"bmp", "jpg", "jpeg", "gif", "png","doc","pdf","zip","rar","docx","webp"};
         //获取文件名
         String originalFilename = file.getOriginalFilename();
         String[] split = originalFilename.split("[.]");
         int flat = 0;
         //判断是不是当前支持的文件格式
         for(String str : filter){
+         //   System.out.println(str+"===");
             if(str.equals(split[1])){
+
                 flat = 1;
                 break;
             }
         }
         if (flat == 0){
-            return "文件上传失败";
+            return "文件格式有误";
         }
         //获取当前项目的路径
         String property = System.getProperty("user.dir");
@@ -67,12 +71,13 @@ public class FileController {
         */
 
         String path = "";
-        if(grade != "" && specialities != "" && stuClass !=""){
-            path = grade + "级/" + specialities + "专业/" + stuClass + "班/";
-            flat = 2;
-        }else {
-            path = "教师/";
+        if(type.equals("100")){
+            path = "教师\\" + Id +"\\" + System.currentTimeMillis() + "\\";
             flat = 3;
+        }else {
+            path = grade + "级\\" + specialities + "专业\\" + stuClass + "班\\" + Id + "\\" + System.currentTimeMillis() + "\\";
+            flat = 2;
+
         }
         property  = property + path;
         String filePath = property + originalFilename;

@@ -125,7 +125,7 @@ public class FileController {
         String  oldPassword = pwdVo.getOldPassword();
         String str = "没有啊,宝";
 
-        System.out.println(oldPassword+"   =====");
+        System.out.println(oldPassword+"------"+newPassword+"   =====");
         if(type.equals("1")){
             str = teacherService.editPassWord(id,newPassword,oldPassword);
         }

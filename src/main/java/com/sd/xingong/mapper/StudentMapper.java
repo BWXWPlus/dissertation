@@ -26,4 +26,6 @@ public interface StudentMapper {
     void uploadFiles(String studentId,String str, String type);
 
     int editStudentInformation(Student student);
+
+    int editPassWord(String id, String newPassword);
 }

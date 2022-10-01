@@ -2,7 +2,10 @@ package com.sd.xingong.controller;
 
 import com.sd.xingong.mapper.StudentMapper;
 import com.sd.xingong.mapper.TeacherMapper;
+import com.sd.xingong.service.StudentService;
+import com.sd.xingong.service.TeacherService;
 import com.sd.xingong.vo.FileNameVo;
+import com.sd.xingong.vo.PwdVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +26,10 @@ public class FileController {
     private StudentMapper studentMapper;
     @Autowired
     private TeacherMapper teacherMapper;
+    @Autowired
+    private StudentService studentService;
+    @Autowired
+    private TeacherService teacherService;
 
     /**
      *
@@ -108,5 +115,23 @@ public class FileController {
             e.printStackTrace();
         }
         return filePath;
+    }
+
+    @PostMapping("/edit/pwd")
+    public String editPassword(@RequestBody PwdVo pwdVo){
+        String type = pwdVo.getType();
+        String id = pwdVo.getId();
+        String newPassword = pwdVo.getNewPassword();
+        String  oldPassword = pwdVo.getOldPassword();
+        String str = "没有啊,宝";
+
+        System.out.println(oldPassword+"   =====");
+        if(type.equals("1")){
+            str = teacherService.editPassWord(id,newPassword,oldPassword);
+        }
+        if(type.equals("2")){
+            str = studentService.editPassWord(id,newPassword,oldPassword);
+        }
+        return str;
     }
 }

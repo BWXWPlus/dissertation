@@ -101,4 +101,20 @@ public class StudentServiceImpl implements StudentService {
         }
         return false;
     }
+
+    @Override
+    public String editPassWord(String id, String newPassword, String oldPassword) {
+        Student student = studentMapper.studentLogin(id, oldPassword);
+        if(student == null){
+            return "旧密码不正确";
+        }
+        if(oldPassword.equals(newPassword)){
+            return "新旧密码相同";
+        }
+        int result = studentMapper.editPassWord(id,newPassword);
+        if(result > 0){
+            return "修改成功";
+        }
+        return "密码修改失败";
+    }
 }

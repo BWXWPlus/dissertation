@@ -113,4 +113,20 @@ public class TeacherServiceImpl implements TeacherService {
         }
         return false;
     }
+
+    @Override
+    public String editPassWord(String id, String newPassword, String oldPassword) {
+        Teacher teacher = teacherMapper.teacherLogin(id, oldPassword);
+        if(teacher == null){
+            return "旧密码不正确";
+        }
+        if(oldPassword.equals(newPassword)){
+            return "新旧密码相同";
+        }
+        int result = teacherMapper.editPassWord(id,newPassword);
+        if(result > 0){
+            return "修改成功";
+        }
+        return "密码修改失败";
+    }
 }

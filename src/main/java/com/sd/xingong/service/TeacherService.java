@@ -21,4 +21,6 @@ public interface TeacherService {
     Teacher getATeacherById(int parseInt);
 
     Boolean editTeacher(Teacher teacher);
+
+    String editPassWord(String id, String newPassword, String oldPassword);
 }

@@ -19,4 +19,6 @@ public interface StudentService {
     Boolean studentSelectTeacher(int teacherId, String studentId);
 
     Boolean editStudentInformation(Student student);
+
+    String editPassWord(String id, String newPassword, String oldPassword);
 }

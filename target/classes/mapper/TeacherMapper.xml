@@ -26,7 +26,7 @@
     </update>
   <!--  教师对学生表的一些操作-->
     <update id="teacherRefuseStudent">
-        UPDATE tb_student SET mentor_id = 0 WHERE student_id = #{studentId} ;
+        UPDATE tb_student SET mentor_id = 0 , is_selected = 0 WHERE student_id = #{studentId} ;
     </update>
     <update id="editTeacher">
         UPDATE tb_teacher

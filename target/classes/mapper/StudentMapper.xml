@@ -161,7 +161,22 @@
                 notes5 = #{notes5},
             </if>
             <if test="age != null">
-                age = #{age}
+                age = #{age},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="mentor2Id != 0">
+                mentor2_id = #{mentor2Id},
+            </if>
+            <if test="isFirstSession >=0">
+                is_first_session = #{isFirstSession},
+            </if>
+            <if test="isCompletePractice >= 0">
+                is_complete_practice = #{isCompletePractice},
+            </if>
+            <if test="grade != 0">
+                grade = #{grade},
             </if>
         </trim>
         WHERE student_id = #{studentId};

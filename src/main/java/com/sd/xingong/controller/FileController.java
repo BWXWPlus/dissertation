@@ -68,10 +68,14 @@ public class FileController {
             return "文件格式有误";
         }
         //获取当前项目的路径
-        String property = System.getProperty("user.dir");
-
+       // String property = System.getProperty("user.dir");
+       // System.out.println(property);
         //拼接生成文件存放的位置
-        property = property + "\\src\\main\\resources\\static\\";
+       // property = property + "\\src\\main\\resources\\static\\";
+
+
+        //服务器绝对路径nginx映射
+        String property = "/usr/nginx/files/";
 
     /*  以文件上传时间命名的格式
         Date date = new Date();
@@ -83,14 +87,20 @@ public class FileController {
 
         String path = "";
         if(type.equals("100")){
-            path = "教师\\" + Id +"\\" + System.currentTimeMillis() + "\\";
+            path = "教师/" + Id +"/" + System.currentTimeMillis() + "/";
             flat = 3;
         }else {
-            path = grade + "级\\" + specialities + "专业\\" + stuClass + "班\\" + Id + "\\" + System.currentTimeMillis() + "\\";
+            path = grade + "级/" + specialities + "专业/" + stuClass + "班/" + Id + "/" + System.currentTimeMillis() + "/";
             flat = 2;
 
         }
         property  = property + path;
+       String newPath[] = originalFilename.split(" ");
+       originalFilename = "";
+       for(String str : newPath){
+         //  System.out.println(str + "---=---");
+           originalFilename += str;
+       }
         String filePath = property + originalFilename;
 
         //上传文件
@@ -102,7 +112,6 @@ public class FileController {
         try {
             file.transferTo(newFile);
             String str =  path+originalFilename;
-
             if(flat == 2){
                 //将文件名称写入学生数据库
                 System.out.println(str);

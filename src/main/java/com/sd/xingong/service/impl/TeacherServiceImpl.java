@@ -44,7 +44,7 @@ public class TeacherServiceImpl implements TeacherService {
         if(teacher == null){
             return  false;
         }
-        if(teacher.getStudentNum()  + studentIds.length> 20){
+        if(teacher.getStudentNum()  + studentIds.length> 25){
             return  false;
         }
         for(String studentId : studentIds){

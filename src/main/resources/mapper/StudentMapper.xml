@@ -173,7 +173,10 @@
                 is_first_session = #{isFirstSession},
             </if>
             <if test="isCompletePractice >= 0">
-                is_complete_practice = #{isCompletePractice}
+                is_complete_practice = #{isCompletePractice},
+            </if>
+            <if test="grade != 0">
+                grade = #{grade},
             </if>
         </trim>
         WHERE student_id = #{studentId};

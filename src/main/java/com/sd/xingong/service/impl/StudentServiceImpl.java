@@ -75,7 +75,7 @@ public class StudentServiceImpl implements StudentService {
         //同样，为了保险起见，学生选择老师也判断一次该老师名下的学生是否已满， 以及该学生是否已经有导师了
         //首先要先判断该导师是否已经选满了20人，如果已经选满20人，则不能再选学生
         Teacher teacher = teacherMapper.getATeacher(teacherId);
-        if(teacher.getStudentNum() >= 20){
+        if(teacher.getStudentNum() >= 25){
             return  false;
         }
         //再判断该学生是否已经有导师了，，严谨一点

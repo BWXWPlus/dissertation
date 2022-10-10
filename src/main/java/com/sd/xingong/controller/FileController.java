@@ -4,7 +4,7 @@ import com.sd.xingong.mapper.StudentMapper;
 import com.sd.xingong.mapper.TeacherMapper;
 import com.sd.xingong.service.StudentService;
 import com.sd.xingong.service.TeacherService;
-import com.sd.xingong.vo.FileNameVo;
+
 import com.sd.xingong.vo.PwdVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;

@@ -50,14 +50,16 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public StudentCount searchStudents(String name, String studentId, String title, int startIndex, int pageSize) {
+    public StudentCount searchStudents(String name, String studentId, String title,String stuClass,String teacherName, int startIndex, int pageSize) {
         //字符拼接方便模糊查询
         name = "%" + name + "%";
         studentId = "%" + studentId + "%";
         title = "%" + title + "%";
+        stuClass = "%" + stuClass + "%";
+        teacherName = "%" + teacherName + "%";
         //计算转换 ， 方便limit使用
         startIndex = pageSize * (startIndex - 1);
-        List<Student> students =  studentMapper.searchStudents(name,studentId,title,startIndex,pageSize);
+        List<Student> students =  studentMapper.searchStudents(name,studentId,title,stuClass,teacherName,startIndex,pageSize);
 
         for(Student student : students){
             student.setPassword("");
@@ -65,7 +67,7 @@ public class StudentServiceImpl implements StudentService {
 
         //统计所有的学生总数
 
-        int count =  studentMapper.getStudentCount(name,studentId,title);
+        int count =  studentMapper.getStudentCount(name,studentId,title,stuClass,teacherName);
         StudentCount studentCount = new StudentCount(count,students);
         return  studentCount;
     }

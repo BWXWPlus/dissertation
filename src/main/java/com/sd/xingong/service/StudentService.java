@@ -14,7 +14,7 @@ public interface StudentService {
 
     StudentResult studentLogin(String studentId, String password);
 
-    StudentCount searchStudents(String name, String studentId, String title, int startIndex, int pageSize);
+    StudentCount searchStudents(String name, String studentId, String title,String stuClass, String teacherName, int startIndex, int pageSize);
 
     Boolean studentSelectTeacher(int teacherId, String studentId);
 

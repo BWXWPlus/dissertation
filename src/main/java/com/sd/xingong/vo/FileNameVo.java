@@ -1,5 +1,8 @@
 package com.sd.xingong.vo;
 
+/**
+ * 没用到
+ */
 public class FileNameVo {
     private int grade;
     private String specialities;

@@ -25,7 +25,13 @@
                       student_id LIKE #{studentId} AND
                 </if>
                 <if test="title !='%%'" >
-                      title LIKE #{title}
+                      title LIKE #{title} AND
+                </if>
+                <if test="stuClass !='%%'">
+                    stu_class LIKE #{stuClass} AND
+                </if>
+                <if test="teacherName != '%%'">
+                    mentor_id IN (SELECT id FROM tb_teacher WHERE name LIKE #{teacherName})
                 </if>
             </trim>
             LIMIT #{startIndex}
@@ -60,7 +66,13 @@
                   student_id LIKE #{studentId} AND
             </if>
             <if test="title != '%%'" >
-                 title LIKE #{title}
+                 title LIKE #{title} AND
+            </if>
+            <if test="stuClass !='%%'">
+                stu_class LIKE #{stuClass} AND
+            </if>
+            <if test="teacherName != '%%'">
+                mentor_id IN (SELECT id FROM tb_teacher WHERE name LIKE #{teacherName})
             </if>
         </trim>
     </select>
@@ -91,7 +103,7 @@
             <if test="specialities != null">
                 specialities = #{specialities},
             </if>
-            <if test ="stuClass != 0">
+            <if test ="stuClass != null">
                 stu_class = #{stuClass},
             </if>
             <if test="phone != null">

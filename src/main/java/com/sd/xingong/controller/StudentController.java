@@ -40,9 +40,9 @@ public class StudentController {
      * @return
      */
     @GetMapping("/search")
-    public StudentCount searchStudents(@RequestParam("name") String name, @RequestParam("studentId") String studentId, @RequestParam("title") String title,@RequestParam("startIndex") String startIndex, @RequestParam("pageSize") String pageSize){
+    public StudentCount searchStudents(@RequestParam("name") String name, @RequestParam("studentId") String studentId, @RequestParam("title") String title, @RequestParam("stuClass") String stuClass, @RequestParam("teacherName") String teacherName ,@RequestParam("startIndex") String startIndex, @RequestParam("pageSize") String pageSize){
                 //获取所有学生列表
-               StudentCount students = studentService.searchStudents(name,studentId,title,Integer.parseInt(startIndex),Integer.parseInt(pageSize));
+               StudentCount students = studentService.searchStudents(name,studentId,title,stuClass,teacherName,Integer.parseInt(startIndex),Integer.parseInt(pageSize));
 
                 return  students;
         }

@@ -20,8 +20,8 @@ public class Student {
   private String file;
   private String file2;
   private String file3;
-  private long natureTopicSelection;
-  private long sourceTopicSelection;
+  private String natureTopicSelection;
+  private String sourceTopicSelection;
   private long isCompletePractice;
   private long mentorId;
   private long mentor2Id;
@@ -220,23 +220,21 @@ public class Student {
   }
 
 
-  public long getNatureTopicSelection() {
+  public String getNatureTopicSelection() {
     return natureTopicSelection;
   }
 
-  public void setNatureTopicSelection(long natureTopicSelection) {
+  public void setNatureTopicSelection(String natureTopicSelection) {
     this.natureTopicSelection = natureTopicSelection;
   }
 
-
-  public long getSourceTopicSelection() {
+  public String getSourceTopicSelection() {
     return sourceTopicSelection;
   }
 
-  public void setSourceTopicSelection(long sourceTopicSelection) {
+  public void setSourceTopicSelection(String sourceTopicSelection) {
     this.sourceTopicSelection = sourceTopicSelection;
   }
-
 
   public long getIsCompletePractice() {
     return isCompletePractice;

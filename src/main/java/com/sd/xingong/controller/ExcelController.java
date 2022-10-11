@@ -60,7 +60,7 @@ public class ExcelController {
             }else {
                 map.put("成果类别(论文/设计)", "无");
             }
-            if(student.getNatureTopicSelection() ==0){
+         /*   if(student.getNatureTopicSelection() ==0){
                 map.put("选题性质(开题报告写法一致)", "无");
             }else if(student.getNatureTopicSelection() == 1){
                 map.put("选题性质(开题报告写法一致)", "理论研究");
@@ -71,17 +71,24 @@ public class ExcelController {
             }else if(student.getNatureTopicSelection() == 4){
                 map.put("选题性质(开题报告写法一致)", "工程设计");
             }else {
-                map.put("选题性质(开题报告写法一致)", "无");
-            }
-            if(student.getSourceTopicSelection() == 0){
+
+            }*/
+            map.put("选题性质(开题报告写法一致)", "技术开发");
+         /*   if(student.getSourceTopicSelection() == 0){
                 map.put("选题来源(开题报告写法一致)", "无");
             }else  if(student.getSourceTopicSelection() == 1){
                 map.put("选题来源(开题报告写法一致)", "指定选题");
             }else  if(student.getSourceTopicSelection() == 2){
                 map.put("选题来源(开题报告写法一致)", "自拟选题");
             }else {
+
+            }*/
+            if(student.getSourceTopicSelection() != null){
+                map.put("选题来源(开题报告写法一致)", student.getSourceTopicSelection());
+            }else {
                 map.put("选题来源(开题报告写法一致)", "无");
             }
+
 
             map.put("序号", j);
             j++;

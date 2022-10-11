@@ -126,8 +126,8 @@ public class ExcelController {
             mapArrayList.add(map);
         }
         System.out.println(mapArrayList);
-        ExcelUtils.getInstance().createExcel(mapArrayList,"data","2023届本科毕业设计（论文）题目汇总");
-
-        return  "下载成功";
+        String path = ExcelUtils.getInstance().createExcel(mapArrayList, "学生信息汇总", "2023届本科毕业设计（论文）题目汇总");
+        System.out.println(path);
+        return  path;
     }
 }

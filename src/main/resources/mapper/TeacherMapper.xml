@@ -26,6 +26,8 @@
     </update>
   <!--  教师对学生表的一些操作-->
     <update id="teacherRefuseStudent">
+        SET @flag = (SELECT is_selected FROM tb_student WHERE student_id = #{studentId});
+        UPDATE tb_teacher SET student_num = student_num -1 WHERE id = (SELECT mentor_id FROM tb_student WHERE student_id = #{studentId}) AND @flag = 1 ;
         UPDATE tb_student SET mentor_id = 0 , is_selected = 0 WHERE student_id = #{studentId} ;
     </update>
     <update id="editTeacher">

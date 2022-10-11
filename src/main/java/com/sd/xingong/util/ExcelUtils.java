@@ -152,8 +152,11 @@ public class ExcelUtils {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         // 使用项目根目录, 文件名加上时间戳
-        String path = System.getProperty("user.dir") + "\\" + filename + dateFormat.format(date) + ".xlsx";
-        System.out.println("Excel文件输出路径: "+path);
+        String path = "/usr/nginx/files";
+        String path2 = "/excel/" + filename + System.currentTimeMillis() + ".xlsx" ;
+        path = path + path2;
+       // String path = System.getProperty("user.dir") + "\\" + filename + dateFormat.format(date) + ".xlsx";
+        System.out.println("Excel文件输出路径: "+path2);
         try {
             File file = new File(path);
             FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -163,7 +166,7 @@ public class ExcelUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return path;
+        return path2;
     }
 
 

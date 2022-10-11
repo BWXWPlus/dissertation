@@ -130,10 +130,10 @@
             <if test="thesisType != null">
                 thesis_type = #{thesisType},
             </if>
-            <if test="natureTopicSelection != 0">
+            <if test="natureTopicSelection != null">
                 nature_topic_selection = #{natureTopicSelection},
             </if>
-            <if test="sourceTopicSelection != 0">
+            <if test="sourceTopicSelection != null">
                 source_topic_selection = #{sourceTopicSelection},
             </if>
             <if test="mentorScore != 0">
